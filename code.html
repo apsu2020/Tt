@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>COSMOS OS - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3c83f6",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#09090b",
+                        "surface": "#18181b",
+                        "border-subtle": "#27272a"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .mono-text { font-family: 'JetBrains Mono', monospace; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-border-subtle bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">deployed_code</span>
+</div>
+<h2 class="text-lg font-bold tracking-tight uppercase">Cosmos OS</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="#">Analytics</a>
+<a class="text-sm font-medium text-primary" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-lg">search</span>
+<input class="bg-surface border border-border-subtle rounded-lg pl-10 pr-4 py-1.5 text-sm focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all w-64" placeholder="Search settings..." type="text"/>
+</div>
+<button class="p-2 text-slate-500 hover:text-white transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full border-2 border-background-dark"></span>
+</button>
+<div class="size-9 rounded-full bg-surface border border-border-subtle overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="User profile avatar illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRrdsGzbeZma8JHE7pv3RkbtGSnQrXxwngkvLfBA4n1vmBnj4msKf9KrY_7Gm2qWZPB4y_hNaPHqOtNZrrP05z9QSKQiBgszR37S02j0wa0MpHfMapHZ4iBEoY5CcqD_Ej1t1gUYlbsNdoY1MqERdViqJmhglTbhQrtKKWKUH3ZjJLlolFKEu26R8z_jK2Ru139Q3D52s5X0cRwn-itL131XnlL6NzS8RDLPnjppFwI-kJcfZvMdUHy8meJUjmR4vtKv4iEFm_H4bx"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-[1440px] mx-auto w-full flex flex-col md:flex-row gap-8 px-6 py-8">
+<!-- Sidebar Navigation -->
+<aside class="w-full md:w-64 flex-shrink-0">
+<div class="sticky top-24 space-y-1">
+<p class="px-3 mb-2 text-xs font-semibold text-slate-500 uppercase tracking-wider">Configuration</p>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-medium transition-colors group" href="#proyecto">
+<span class="material-symbols-outlined text-xl">folder_managed</span>
+                    Proyecto
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-surface hover:text-slate-100 transition-colors" href="#dispositivo">
+<span class="material-symbols-outlined text-xl">memory</span>
+                    Dispositivo
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-surface hover:text-slate-100 transition-colors" href="#suscripcion">
+<span class="material-symbols-outlined text-xl">loyalty</span>
+                    Suscripción
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-surface hover:text-slate-100 transition-colors" href="#notificaciones">
+<span class="material-symbols-outlined text-xl">settings_suggest</span>
+                    Notificaciones
+                </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-surface hover:text-slate-100 transition-colors" href="#cuenta">
+<span class="material-symbols-outlined text-xl">account_circle</span>
+                    Cuenta
+                </a>
+<div class="pt-8 space-y-1">
+<p class="px-3 mb-2 text-xs font-semibold text-slate-500 uppercase tracking-wider">Support</p>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-surface hover:text-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">help</span>
+                        Help Center
+                    </a>
+<button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-rose-500 hover:bg-rose-500/10 transition-colors mt-4">
+<span class="material-symbols-outlined text-xl">logout</span>
+                        Logout
+                    </button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 max-w-4xl space-y-10 pb-20">
+<!-- Section: Proyecto -->
+<section class="scroll-mt-24" id="proyecto">
+<div class="flex flex-col gap-1 mb-6">
+<h3 class="text-2xl font-bold tracking-tight">Proyecto</h3>
+<p class="text-slate-500">Manage your project core details and regional preferences.</p>
+</div>
+<div class="bg-surface border border-border-subtle rounded-xl p-6 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-400">Project Name</label>
+<input class="w-full bg-background-dark border border-border-subtle rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all" type="text" value="Casa 3D Cosmos Lite"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-400">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-lg">location_on</span>
+<input class="w-full bg-background-dark border border-border-subtle rounded-lg pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all" type="text" value="Capiatá, Paraguay"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-400">Starting Date</label>
+<input class="w-full bg-background-dark border border-border-subtle rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all" type="date" value="2023-10-24"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-400">Preferred Currency</label>
+<div class="flex p-1 bg-background-dark border border-border-subtle rounded-lg h-[46px]">
+<button class="flex-1 rounded text-sm font-medium bg-primary text-white">PYG</button>
+<button class="flex-1 rounded text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors">USD</button>
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-2">
+<button class="bg-primary hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-medium transition-all shadow-lg shadow-primary/20">Save Project Changes</button>
+</div>
+</div>
+</section>
+<!-- Section: Dispositivo -->
+<section class="scroll-mt-24" id="dispositivo">
+<div class="flex flex-col gap-1 mb-6">
+<h3 class="text-2xl font-bold tracking-tight">Dispositivo</h3>
+<p class="text-slate-500">Technical specifications and hardware controls for ESP32-P4.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div class="bg-surface border border-border-subtle p-5 rounded-xl flex flex-col items-center justify-center text-center gap-2">
+<span class="text-primary material-symbols-outlined text-3xl">wifi</span>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Signal Strength</p>
+<p class="text-lg font-bold">Strong (-42 dBm)</p>
+<div class="w-full h-1.5 bg-background-dark rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-primary w-[85%] rounded-full"></div>
+</div>
+</div>
+<div class="bg-surface border border-border-subtle p-5 rounded-xl flex flex-col items-center justify-center text-center gap-2">
+<span class="text-emerald-500 material-symbols-outlined text-3xl">verified</span>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Firmware</p>
+<p class="text-lg font-bold mono-text">v4.2.0-stable</p>
+<span class="text-[10px] bg-emerald-500/10 text-emerald-500 px-2 py-0.5 rounded uppercase font-bold tracking-tighter">Up to date</span>
+</div>
+<div class="bg-surface border border-border-subtle p-5 rounded-xl flex flex-col items-center justify-center text-center gap-2">
+<span class="text-amber-500 material-symbols-outlined text-3xl">router</span>
+<p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Device ID</p>
+<p class="text-lg font-bold mono-text">ESP32-P4-NODE</p>
+<p class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Manufacturing Series A</p>
+</div>
+</div>
+<div class="bg-surface border border-border-subtle rounded-xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<tbody class="divide-y divide-border-subtle">
+<tr>
+<td class="px-6 py-4 text-sm font-medium text-slate-400 w-1/3">MAC Address</td>
+<td class="px-6 py-4 text-sm mono-text text-slate-100">AA:BB:CC:DD:EE:FF</td>
+</tr>
+<tr>
+<td class="px-6 py-4 text-sm font-medium text-slate-400">Local IP Address</td>
+<td class="px-6 py-4 text-sm mono-text text-slate-100">192.168.1.42</td>
+</tr>
+<tr>
+<td class="px-6 py-4 text-sm font-medium text-slate-400">Uptime</td>
+<td class="px-6 py-4 text-sm text-slate-100">12 days, 04:22:10</td>
+</tr>
+</tbody>
+</table>
+<div class="p-6 bg-background-dark/30 flex flex-wrap gap-4 border-t border-border-subtle">
+<button class="flex items-center gap-2 border border-border-subtle hover:bg-surface px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-lg">restart_alt</span>
+                            Restart Device
+                        </button>
+<button class="flex items-center gap-2 bg-primary/10 text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-all">
+<span class="material-symbols-outlined text-lg">system_update</span>
+                            Update Firmware
+                        </button>
+</div>
+</div>
+</section>
+<!-- Section: Suscripción -->
+<section class="scroll-mt-24" id="suscripcion">
+<div class="flex flex-col gap-1 mb-6">
+<h3 class="text-2xl font-bold tracking-tight">Suscripción</h3>
+<p class="text-slate-500">Manage your active license and service features.</p>
+</div>
+<div class="relative overflow-hidden bg-surface border border-border-subtle rounded-xl p-8">
+<!-- Accent decoration -->
+<div class="absolute -top-12 -right-12 size-48 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Plan Activo</span>
+<span class="text-slate-500 text-sm italic">Next bill: Nov 24, 2024</span>
+</div>
+<div>
+<h4 class="text-4xl font-black text-white italic tracking-tight">'EL ESENCIAL'</h4>
+<p class="text-slate-400 max-w-sm mt-2">Acceso completo a telemetría en tiempo real y alertas automáticas de anomalías térmicas.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 shrink-0">
+<button class="bg-primary hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-bold transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">shopping_cart</span>
+                                Marketplace
+                            </button>
+<button class="text-slate-400 hover:text-white text-sm font-medium underline underline-offset-4 decoration-slate-700">Change Plan</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Notificaciones -->
+<section class="scroll-mt-24" id="notificaciones">
+<div class="flex flex-col gap-1 mb-6">
+<h3 class="text-2xl font-bold tracking-tight">Notificaciones</h3>
+<p class="text-slate-500">Configure how and when you want to be alerted about project changes.</p>
+</div>
+<div class="bg-surface border border-border-subtle rounded-xl overflow-hidden">
+<div class="p-6 border-b border-border-subtle">
+<label class="text-sm font-medium text-slate-400 block mb-2">WhatsApp Contact Number</label>
+<div class="flex gap-2">
+<div class="bg-background-dark border border-border-subtle rounded-lg px-3 py-2 flex items-center gap-2 shrink-0">
+<img alt="Paraguay Flag" class="w-5 h-auto" data-alt="Paraguay national flag icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfnwJ1SvLZeHEvnnqYkymmVW3jF1AlfbILwQP37CaVzgNm0P75LCJjC9SnOxloel0KmA9LRlcFqdDkep3CZ80pApZsoBJ1sUoPn4iFmhMBTWWc2luFUUjEFVGdNnOW3qYmTOZalRb_FVGX0EKxaiDMi6VfR7IReZQpseo5pOeEquRtXfuzKLxA5rz3RRI0ffgabXCeKpXPSHXVW5_oaqQzPO3MlrTqW3Bf87AjcmyF8fhbWyFfIgT6sPtrskWR5iGdUMGVUZ_6pet4"/>
+<span class="text-sm font-medium text-slate-300">+595</span>
+</div>
+<input class="flex-1 bg-background-dark border border-border-subtle rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all" placeholder="981 123456" type="tel"/>
+</div>
+</div>
+<div class="p-0">
+<table class="w-full text-left">
+<thead>
+<tr class="text-[10px] uppercase tracking-widest text-slate-500 bg-background-dark/50">
+<th class="px-6 py-4 font-bold">Alert Type</th>
+<th class="px-6 py-4 font-bold text-center">Push</th>
+<th class="px-6 py-4 font-bold text-center">WhatsApp</th>
+<th class="px-6 py-4 font-bold text-center">Email</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<!-- Stock Alerts -->
+<tr>
+<td class="px-6 py-5">
+<p class="text-sm font-semibold">Stock Alerts</p>
+<p class="text-xs text-slate-500">Inventory levels below 10%</p>
+</td>
+<td class="px-6 py-5 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-background-dark border border-border-subtle rounded-full peer-checked:bg-primary peer-checked:border-primary after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-5"></div>
+</label>
+</td>
+<td class="px-6 py-5 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-background-dark border border-border-subtle rounded-full peer-checked:bg-primary peer-checked:border-primary after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-5"></div>
+</label>
+</td>
+<td class="px-6 py-5 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-background-dark border border-border-subtle rounded-full peer-checked:bg-primary peer-checked:border-primary after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-5"></div>
+</label>
+</td>
+</tr>
+<!-- Anomaly Detection -->
+<tr>
+<td class="px-6 py-5">
+<p class="text-sm font-semibold">Anomaly Detection</p>
+<p class="text-xs text-slate-500">Unusual printer movements or heat</p>
+</td>
+<td class="px-6 py-5 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-background-dark border border-border-subtle rounded-full peer-checked:bg-primary peer-checked:border-primary after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-5"></div>
+</label>
+</td>
+<td class="px-6 py-5 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-background-dark border border-border-subtle rounded-full peer-checked:bg-primary peer-checked:border-primary after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-5"></div>
+</label>
+</td>
+<td class="px-6 py-5 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-background-dark border border-border-subtle rounded-full peer-checked:bg-primary peer-checked:border-primary after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-5"></div>
+</label>
+</td>
+</tr>
+<!-- Weather Updates -->
+<tr>
+<td class="px-6 py-5">
+<p class="text-sm font-semibold">Weather Impact</p>
+<p class="text-xs text-slate-500">Humidity or storms alerts</p>
+</td>
+<td class="px-6 py-5 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-background-dark border border-border-subtle rounded-full peer-checked:bg-primary peer-checked:border-primary after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-5"></div>
+</label>
+</td>
+<td class="px-6 py-5 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-background-dark border border-border-subtle rounded-full peer-checked:bg-primary peer-checked:border-primary after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-5"></div>
+</label>
+</td>
+<td class="px-6 py-5 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-background-dark border border-border-subtle rounded-full peer-checked:bg-primary peer-checked:border-primary after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-5"></div>
+</label>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Section: Cuenta -->
+<section class="scroll-mt-24" id="cuenta">
+<div class="flex flex-col gap-1 mb-6">
+<h3 class="text-2xl font-bold tracking-tight">Cuenta</h3>
+<p class="text-slate-500">Manage your profile information and security settings.</p>
+</div>
+<div class="bg-surface border border-border-subtle rounded-xl p-8">
+<div class="flex flex-col md:flex-row items-center gap-8 mb-8 pb-8 border-b border-border-subtle">
+<div class="relative group">
+<div class="size-24 rounded-full border-4 border-background-dark bg-background-dark flex items-center justify-center overflow-hidden">
+<img alt="Profile Large" class="w-full h-full object-cover" data-alt="Large detailed user profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh1VFv9PGl2ffqeUWuC2HErHsITgoJW-33la7f7ZTU9L8VZcsy_V5loO6rdIB5f-I99UPUIi8A6jMvT-UH2ubzPQDu5ZvntVlggayhYGsIUR7VzLI2JbTeXzQJ0jeLgnNn2eyPc73PLtBdhOEy5XoAJDWgKVlS6nk61YJ3uU876fGlmQ0suyeHbeq11EASMsmgVKdqHf9nuztSjaaYWI4O3ILDoKkV4zYhmkKAciRI9Rjkk6bI2TvMH3GU-CdrGIJDnXOGLBG-F4nu"/>
+</div>
+<button class="absolute bottom-0 right-0 size-8 bg-primary rounded-full flex items-center justify-center border-2 border-background-dark hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-sm">edit</span>
+</button>
+</div>
+<div class="text-center md:text-left flex-1">
+<h4 class="text-xl font-bold">Felix Cosmos</h4>
+<p class="text-slate-400">f.cosmos@industrial.xyz</p>
+<div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+<span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded uppercase font-bold tracking-widest">Administrator</span>
+<span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded uppercase font-bold tracking-widest">Verified ID</span>
+</div>
+</div>
+<button class="border border-border-subtle px-4 py-2 rounded-lg text-sm font-medium hover:bg-background-dark transition-colors">Edit Profile</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<p class="text-sm font-semibold">Two-Factor Authentication</p>
+<p class="text-xs text-slate-500">Secure your account with 2FA</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-background-dark border border-border-subtle rounded-full peer-checked:bg-primary peer-checked:border-primary after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-5"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<p class="text-sm font-semibold">Login Alerts</p>
+<p class="text-xs text-slate-500">Get notified of new sessions</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-background-dark border border-border-subtle rounded-full peer-checked:bg-primary peer-checked:border-primary after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-5"></div>
+</label>
+</div>
+</div>
+<div class="bg-background-dark/50 rounded-lg p-4 border border-border-subtle">
+<p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Recent Active Session</p>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400">devices</span>
+<div class="text-sm">
+<p class="font-medium">Chrome on macOS Sequoia</p>
+<p class="text-xs text-slate-500 font-mono">181.124.64.22 (Asunción, PY)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-border-subtle">
+<div class="space-y-0.5">
+<p class="text-sm font-semibold text-rose-500">Danger Zone</p>
+<p class="text-xs text-slate-500">End current session and wipe local cache</p>
+</div>
+<button class="bg-rose-500/10 text-rose-500 border border-rose-500/20 hover:bg-rose-500 hover:text-white px-6 py-2 rounded-lg font-bold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">power_settings_new</span>
+                            Log Out
+                        </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="border-t border-border-subtle py-8 px-6 bg-background-dark">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-slate-500">© 2024 Cosmos OS Industrial. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a class="text-xs text-slate-500 hover:text-slate-300" href="#">Terms of Service</a>
+<a class="text-xs text-slate-500 hover:text-slate-300" href="#">Privacy Policy</a>
+<a class="text-xs text-slate-500 hover:text-slate-300" href="#">Status</a>
+</div>
+</div>
+</footer>
+</body></html>
